@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rumour Detail</title>
+    <style>
+        .panic {
+            color: red;
+            font-weight: bold;
+        }
+        .normal {
+            color: green;
+            font-weight: bold;
+        }
+        .box {
+            border: 1px solid #aaa;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Rumour Detail</h1>
+
+<div class="box">
+    <p><strong>Rumour ID:</strong> <span th:text="${rumour.rumourId}"></span></p>
+    <p><strong>Title:</strong> <span th:text="${rumour.title}"></span></p>
+    <p><strong>Source:</strong> <span th:text="${rumour.source}"></span></p>
+    <p><strong>Created At:</strong> <span th:text="${rumour.createdAt}"></span></p>
+    <p>
+        <strong>Status:</strong>
+        <span th:text="${rumour.status}"
+              th:class="${rumour.status == 'panic'} ? 'panic' : 'normal'">
+        </span>
+    </p>
+    <p><strong>Number of Reports:</strong> <span th:text="${reportCount}"></span></p>
+</div>
+
+
+<div th:if="${!rumour.verified}">
+    <h2>Report this Rumour</h2>
+
+    <form method="post" action="/reports">
+        <input type="hidden" name="rumourId" th:value="${rumour.rumourId}" />
+
+        <label>User ID:</label><br>
+        <input type="number" name="userId" required /><br><br>
+
+        <label>Report Type:</label><br>
+        <select name="reportType">
+            <option value="fake">Fake Information</option>
+            <option value="distortion">Distortion</option>
+            <option value="incitement">Incitement</option>
+        </select><br><br>
+
+        <button type="submit">Submit Report</button>
+    </form>
+</div>
+
+
+<div th:if="${rumour.verified}">
+    <h2>This rumour has already been verified.</h2>
+    <p>Reporting is no longer allowed.</p>
+</div>
+
+<br>
+<a href="/rumours">⬅ Back to Rumour List</a>
+
+</body>
+</html>

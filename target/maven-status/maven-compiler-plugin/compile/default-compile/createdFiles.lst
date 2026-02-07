@@ -1,0 +1,13 @@
+com\example\db\DB.class
+com\example\dao\RumourDao.class
+com\example\model\Rumour.class
+com\example\controller\ReportController.class
+com\example\dao\ReportDao.class
+com\example\controller\RumourController.class
+com\example\controller\SummaryController.class
+com\example\model\Verification.class
+com\example\dao\VerificationDao.class
+com\example\dao\UserDao.class
+com\example\App.class
+com\example\model\Report.class
+com\example\model\User.class

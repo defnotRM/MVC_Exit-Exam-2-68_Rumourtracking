@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report Failed</title>
+</head>
+<body>
+
+<h2>Report Failed</h2>
+
+<p th:text="${error}">You have already reported this rumour.</p>
+
+<a th:href="'/rumours/' + ${rumourId}">⬅ Back to Rumour</a>
+
+</body>
+</html>

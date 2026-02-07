@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f7f7f7; }
+        .panic { color: #c00; font-weight: bold; }
+        .true { color: #0a7; font-weight: bold; }
+        .false { color: #b00; font-weight: bold; }
+        a { text-decoration:none; color:#06c; }
+    </style>
+</head>
+<body>
+
+<h1>System Summary</h1>
+
+<h2>Rumours in PANIC state</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Rumour ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="r : ${panicRumours}">
+            <td th:text="${r.rumourId}">12345678</td>
+            <td th:text="${r.title}">Title</td>
+            <td class="panic">PANIC</td>
+            <td><a th:href="'/rumours/' + ${r.rumourId}">View</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Verified Rumours</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Rumour ID</th>
+            <th>Title</th>
+            <th>Verification Result</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="v : ${verifiedRumours}">
+            <td th:text="${v.rumourId}">12345678</td>
+            <td th:text="${v.title}">Title</td>
+            <td th:text="${v.result}"
+                th:class="${v.result == 'true'} ? 'true' : 'false'">true</td>
+            <td><a th:href="'/rumours/' + ${v.rumourId}">View</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<a th:href="'/rumours'">⬅ Back to Rumour List</a>
+
+</body>
+</html>

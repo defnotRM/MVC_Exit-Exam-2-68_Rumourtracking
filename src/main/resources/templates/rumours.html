@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rumour List</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f7f7f7; }
+        .panic { color: #c00; font-weight: bold; }
+        .normal { color: #0a7; }
+        a { text-decoration: none; color: #06c; }
+    </style>
+</head>
+<body>
+
+<h1>Rumour Tracking System</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Rumour ID</th>
+            <th>Title</th>
+            <th>Source</th>
+            <th>Status</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="rumour : ${rumours}">
+            <td th:text="${rumour.rumourId}">12345678</td>
+            <td th:text="${rumour.title}">Title</td>
+            <td th:text="${rumour.source}">Source</td>
+            <td th:text="${rumour.status}"
+                th:class="${rumour.status == 'panic'} ? 'panic' : 'normal'">normal</td>
+            <td>
+                
+                <a th:href="'/rumours/' + ${rumour.rumourId}">View</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<a th:href="'/summary'">Go to Summary</a>
+
+</body>
+</html>
