@@ -54,7 +54,7 @@
 
 ### Database
 - ฐานข้อมูล: SQLite
-- ไฟล์ฐานข้อมูล: `src/main/resources/rumours.db`
+- ไฟล์ฐานข้อมูล: `src/main/resources/templates/rumours.db`
 - ไฟล์โครงสร้างฐานข้อมูล: `schema.sql`
 - ไฟล์ข้อมูลเริ่มต้น: `seed.sql`
 
@@ -83,6 +83,7 @@ mvn clean compile exec:java
 ## เปิดเว็บเบราว์เซอร์
 
 [http://localhost:4567](http://localhost:4567)
+
 
 
 
